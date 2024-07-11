@@ -11,7 +11,7 @@ const Products = () => {
     //get all products
     const getAllProducts = async () => {
         try {
-            const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-products`);
+            const { data } = await axios.get(`/api/v1/product/get-products`);
             setProducts(data.products);
         } catch (error) {
             console.log("Failed to get all products | ", error);
@@ -36,7 +36,7 @@ const Products = () => {
                             {products?.map((product) => (
                                 <Link key={product._id} to={`/dashboard/admin/product/${product.slug}`} className='product-link'>
                                     <div className="card m-2" style={{ width: '18rem' }} key={product._id}>
-                                        <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} />
+                                        <img src={`/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} />
                                         <div className="card-body">
                                             <h5 className="card-title">{product.name}</h5>
                                             <p className="card-text">{product.description}</p>

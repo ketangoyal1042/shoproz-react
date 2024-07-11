@@ -7,7 +7,7 @@ export default function useCategory() {
     //get the category
     const getCategories = async () => {
         try {
-            const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/get-category`);
+            const { data } = await axios.get(`/api/v1/category/get-category`);
             if (data?.success) {
                 setCategory(data?.category);
             }

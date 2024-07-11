@@ -27,7 +27,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/category/get-category`
+        `/api/v1/category/get-category`
       );
       if (data?.success) {
         setCategories(data?.category);
@@ -43,10 +43,10 @@ const HomePage = () => {
   //get all products
   const getAllProducts = async () => {
     try {
-      // const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-products`);
+      // const { data } = await axios.get(`/api/v1/product/get-products`);
       // removing this above api call, because now we are using productList as per page api call, which helps to create pagination
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
+        `/api/v1/product/product-list/${page}`
       );
       setProducts(data.products);
     } catch (error) {
@@ -59,10 +59,9 @@ const HomePage = () => {
   const getTotalCount = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/product-count`
+        `/api/v1/product/product-count`
       );
       setTotal(data?.total);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -73,7 +72,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
+        `/api/v1/product/product-list/${page}`
       );
       setProducts([...products, ...data?.products]);
       setLoading(false);
@@ -108,9 +107,8 @@ const HomePage = () => {
   // get filtered products
   const filteredProducts = async () => {
     try {
-      console.log(checked);
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/product/product-filter`,
+        `/api/v1/product/product-filter`,
         { checked, radio }
       );
       setProducts(data.products);
@@ -174,8 +172,8 @@ const HomePage = () => {
         </div>
         <div className="col-md-9">
           <h1 className="text-center">All Products</h1>
-          {JSON.stringify(checked, null, 4)}
-          {JSON.stringify(radio, null, 4)}
+          {/* {JSON.stringify(checked, null, 4)}
+          {JSON.stringify(radio, null, 4)} */}
           <div className="d-flex flex-wrap">
             {products?.map((product) => (
               <div
@@ -184,7 +182,7 @@ const HomePage = () => {
                 key={product._id}
               >
                 <img
-                  src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
+                  src={`/api/v1/product/product-photo/${product._id}`}
                   className="card-img-top"
                   alt={product.name}
                 />

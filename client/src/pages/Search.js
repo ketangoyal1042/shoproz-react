@@ -12,7 +12,7 @@ const Search = () => {
                     <div className="d-flex flex-wrap mt-2">
                         {values?.results.map((product) => (
                             <div className="card m-2" style={{ width: '18rem' }} key={product._id}>
-                                <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} />
+                                <img src={`/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} />
                                 <div className="card-body">
                                     <h5 className="card-title">{product.name}</h5>
                                     <p className="card-text">{product.description.substring(0, 30)}</p>

@@ -14,7 +14,7 @@ const ProductDetails = () => {
   //get products
   const getProduct = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-products/${params.slug}`);
+      const { data } = await axios.get(`/api/v1/product/get-products/${params.slug}`);
       setProduct(data?.product);
       getRelatedProduct(data?.product._id, data?.product.category._id);
     } catch (error) {
@@ -25,7 +25,7 @@ const ProductDetails = () => {
   // get related product details
   const getRelatedProduct = async (pid, cid) => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/related-product/${pid}/${cid}`);
+      const { data } = await axios.get(`/api/v1/product/related-product/${pid}/${cid}`);
       setRelatedProduct(data?.products);
     } catch (error) {
       console.log(error);
@@ -40,7 +40,7 @@ const ProductDetails = () => {
       {/* {JSON.stringify(product,null, 4)} */}
       <div className="row container mt-2">
         <div className="col-md-6">
-          <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} height={400} />
+          <img src={`/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} height={400} />
         </div>
         <div className="col-md-6 ">
           <h1 text-center >Product Details</h1>
@@ -59,7 +59,7 @@ const ProductDetails = () => {
         <div className="d-flex flex-wrap">
           {relatedProduct?.map((product) => (
             <div className="card m-2" style={{ width: '18rem' }} key={product._id}>
-              <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} />
+              <img src={`/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name} />
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
                 <p className="card-text">{product.description.substring(0, 30)}</p>

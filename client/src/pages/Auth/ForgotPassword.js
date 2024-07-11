@@ -15,8 +15,8 @@ const ForgotPassword = () => {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/forgot-password`, { email, newpassword, answer })
-            console.log(`${process.env.REACT_APP_API}`)
+            const res = await axios.post(`/api/v1/auth/forgot-password`, { email, newpassword, answer })
+            console.log(``)
             if (res && res.data.success) {
                 toast.success(res.data.message);
                 navigate('/login');
